@@ -26,7 +26,7 @@ def create_dictionary(dataroot):
 
 def create_glove_embedding_init(idx2word, glove_file):
     word2emb = {}
-    with open(glove_file, 'r') as f:
+    with open(glove_file, 'r', encoding = 'utf8') as f:
         entries = f.readlines()
     emb_dim = len(entries[0].split(' ')) - 1
     print('embedding dim is %d' % emb_dim)
@@ -49,7 +49,7 @@ if __name__ == '__main__':
     d.dump_to_file('data/dictionary.pkl')
 
     d = Dictionary.load_from_file('data/dictionary.pkl')
-    emb_dim = 300
+    emb_dim = 50
     glove_file = 'data/glove/glove.6B.%dd.txt' % emb_dim
     weights, word2emb = create_glove_embedding_init(d.idx2word, glove_file)
     np.save('data/glove6b_init_%dd.npy' % emb_dim, weights)
