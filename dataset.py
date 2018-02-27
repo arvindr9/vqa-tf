@@ -5,8 +5,9 @@ import _pickle as cPickle
 import numpy as np
 import utils
 import h5py
-import torch
-from torch.utils.data import Dataset
+import tensorflow as tf
+# import torch
+# from torch.utils.data import Dataset
 
 
 class Dictionary(object):
@@ -96,8 +97,7 @@ def _load_dataset(dataroot, name, img_id2val):
         entries.append(_create_entry(img_id2val[img_id], question, answer))
 
     return entries
-
-
+'''
 class VQAFeatureDataset(Dataset):
     def __init__(self, name, dictionary, dataroot='data'):
         super(VQAFeatureDataset, self).__init__()
@@ -179,3 +179,4 @@ class VQAFeatureDataset(Dataset):
 
     def __len__(self):
         return len(self.entries)
+'''
